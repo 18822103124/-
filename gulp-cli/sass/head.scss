@@ -1,0 +1,179 @@
+html,body,ul,p,h1,h2,h3,h4,h5,h6,dl,dt,dd,form,table,ol,li,th,td,tr,colgroup,caption{margin:0;padding:0;};
+li{list-style:none;};
+a{text-decoration: none;};
+img{display: block;};
+h1,h2,h3,h4,h5,h6{font-weight:normal;};
+b,strong{font-weight:normal;};
+i,em{font-style:normal;};
+
+.box{
+    width: 100%;
+    height: 40px;
+    background-color: #666;
+    .box_content{
+        width: 1270px;
+        height: 40px;
+        margin: auto;
+        .box_left{
+            float: left;
+            line-height: 40px;
+            li{
+                float: left;
+                padding: 0 21px;
+                a{
+                    color: #ccc;
+                    &:hover{
+                        color: white;
+                    }
+                } 
+            }
+        }
+        .box_right{
+            float: right;
+            margin-right: 6px;
+            line-height: 40px;
+            li{
+                float: left;
+                position: relative;
+                a{
+                    color: #ccc;
+                    padding: 0 15px;
+                    border-right:1px solid #979797 ;
+                    &:hover{
+                        color: white;
+                    }
+                }
+                .box_bor{
+                    border-right: none;
+                }
+            }
+            .box_wechat{
+                div{
+                    width: 180px;
+                    height: 200px;
+                    border: 1px solid #ccc;
+                    position: absolute;
+                    top: 40px;left: -40px;
+                    z-index: 100;
+                    background-color: #fff;
+                    display: none;
+                    img{
+                        margin: 20px auto 0;
+                        width: 125px;
+                        height: 125px;
+                    }
+                    span{
+                        display: block;
+                        text-align: center;
+                        height: 15px;
+                        font-size: 10px;
+                        color: #333;
+                    }
+                }
+                &:hover{
+                    div{
+                        display: block;
+                    }
+                }
+
+            }
+            .box_tcl{
+                div{
+                    width: 180px;
+                    height: 200px;
+                    border: 1px solid #ccc;
+                    position: absolute;
+                    top: 40px;left: -50px;
+                    z-index: 100;
+                    background-color: #fff;
+                    display: none;
+                    img{
+                        margin: 20px auto 0;
+                        width: 125px;
+                        height: 125px;
+                    }
+                    span{
+                        display: block;
+                        text-align: center;
+                        height: 15px;
+                        font-size: 10px;
+                        color: #333;
+                    }
+                }
+                &:hover{
+                    div{
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+};
+
+.list{
+    width: 100%;
+    height: 80px;
+    position: relative;
+    .list_content{
+        width: 1270px;
+        height: 63px;
+        padding-top: 17px;
+        margin: auto;
+        position: relative;
+        img{
+            float: left;
+        }
+        .list_left{
+            float: left;
+            margin-left:100px ;
+            line-height: 46px;
+            li{
+                float: left;
+                padding: 0 17px;
+                a{
+                    color: #333;
+                    font-size: 14px;
+                }
+                &:hover{
+                    border-bottom: 3px solid red;
+                }
+            }
+        }
+        .list_right{
+            float: right;
+            margin-right: 236px;
+            line-height: 46px;
+            li{
+                float: left;
+                padding: 0 13px;
+                a{
+                    color: #555;
+                    font-size: 14px;
+                }
+            }
+            .list_right_li{
+                border-left: 1px solid #e3e3e3;
+                padding-left: 17px;
+            }
+        }
+        .list_input{
+            width: 231px;
+            height: 32px;
+            border: 1px solid #ccc;
+            position: absolute;
+            right: 0;bottom: 21px;
+            input{
+                border: none;
+                font-size: 12px;
+                position: absolute;
+                top: 7px;left: 15px;
+                outline: none;
+            }
+            img{
+                position: absolute;
+                top: 2px;right: 8px;
+                cursor: pointer;
+            }
+        }
+    }
+}

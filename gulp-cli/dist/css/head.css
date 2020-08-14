@@ -1,0 +1,156 @@
+html, body, ul, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, form, table, ol, li, th, td, tr, colgroup, caption {
+  margin: 0;
+  padding: 0; }
+
+li {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+img {
+  display: block; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal; }
+
+b, strong {
+  font-weight: normal; }
+
+i, em {
+  font-style: normal; }
+
+.box {
+  width: 100%;
+  height: 40px;
+  background-color: #666; }
+  .box .box_content {
+    width: 1270px;
+    height: 40px;
+    margin: auto; }
+    .box .box_content .box_left {
+      float: left;
+      line-height: 40px; }
+      .box .box_content .box_left li {
+        float: left;
+        padding: 0 21px; }
+        .box .box_content .box_left li a {
+          color: #ccc; }
+          .box .box_content .box_left li a:hover {
+            color: white; }
+    .box .box_content .box_right {
+      float: right;
+      margin-right: 6px;
+      line-height: 40px; }
+      .box .box_content .box_right li {
+        float: left;
+        position: relative; }
+        .box .box_content .box_right li a {
+          color: #ccc;
+          padding: 0 15px;
+          border-right: 1px solid #979797; }
+          .box .box_content .box_right li a:hover {
+            color: white; }
+        .box .box_content .box_right li .box_bor {
+          border-right: none; }
+      .box .box_content .box_right .box_wechat div {
+        width: 180px;
+        height: 200px;
+        border: 1px solid #ccc;
+        position: absolute;
+        top: 40px;
+        left: -40px;
+        z-index: 100;
+        background-color: #fff;
+        display: none; }
+        .box .box_content .box_right .box_wechat div img {
+          margin: 20px auto 0;
+          width: 125px;
+          height: 125px; }
+        .box .box_content .box_right .box_wechat div span {
+          display: block;
+          text-align: center;
+          height: 15px;
+          font-size: 10px;
+          color: #333; }
+      .box .box_content .box_right .box_wechat:hover div {
+        display: block; }
+      .box .box_content .box_right .box_tcl div {
+        width: 180px;
+        height: 200px;
+        border: 1px solid #ccc;
+        position: absolute;
+        top: 40px;
+        left: -50px;
+        z-index: 100;
+        background-color: #fff;
+        display: none; }
+        .box .box_content .box_right .box_tcl div img {
+          margin: 20px auto 0;
+          width: 125px;
+          height: 125px; }
+        .box .box_content .box_right .box_tcl div span {
+          display: block;
+          text-align: center;
+          height: 15px;
+          font-size: 10px;
+          color: #333; }
+      .box .box_content .box_right .box_tcl:hover div {
+        display: block; }
+
+.list {
+  width: 100%;
+  height: 80px;
+  position: relative; }
+  .list .list_content {
+    width: 1270px;
+    height: 63px;
+    padding-top: 17px;
+    margin: auto;
+    position: relative; }
+    .list .list_content img {
+      float: left; }
+    .list .list_content .list_left {
+      float: left;
+      margin-left: 100px;
+      line-height: 46px; }
+      .list .list_content .list_left li {
+        float: left;
+        padding: 0 17px; }
+        .list .list_content .list_left li a {
+          color: #333;
+          font-size: 14px; }
+        .list .list_content .list_left li:hover {
+          border-bottom: 3px solid red; }
+    .list .list_content .list_right {
+      float: right;
+      margin-right: 236px;
+      line-height: 46px; }
+      .list .list_content .list_right li {
+        float: left;
+        padding: 0 13px; }
+        .list .list_content .list_right li a {
+          color: #555;
+          font-size: 14px; }
+      .list .list_content .list_right .list_right_li {
+        border-left: 1px solid #e3e3e3;
+        padding-left: 17px; }
+    .list .list_content .list_input {
+      width: 231px;
+      height: 32px;
+      border: 1px solid #ccc;
+      position: absolute;
+      right: 0;
+      bottom: 21px; }
+      .list .list_content .list_input input {
+        border: none;
+        font-size: 12px;
+        position: absolute;
+        top: 7px;
+        left: 15px;
+        outline: none; }
+      .list .list_content .list_input img {
+        position: absolute;
+        top: 2px;
+        right: 8px;
+        cursor: pointer; }
