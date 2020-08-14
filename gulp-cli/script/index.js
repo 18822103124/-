@@ -1,5 +1,5 @@
 $('.head').load('./head.html');
-$('.bottom').load('./bottom.html');
+$('.bom').load('./bottom.html');
 var imgs=document.querySelectorAll('.lun_img img');
 var nums=document.querySelectorAll('.num li');
 var preve=document.querySelector('.preve');

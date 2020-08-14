@@ -19,6 +19,12 @@ task('image', async ()=>{
   .pipe(load.connect.reload())
 })
 
+task('img', async ()=>{
+  src('./img/*.*')
+  .pipe(dest('./dist/img'))
+  .pipe(load.connect.reload())
+})
+
 // 处理scss
 task('sass', async ()=>{
   src('./sass/*.scss')
@@ -47,6 +53,7 @@ task('watch',async ()=>{
   watch('./sass/*.scss',series('sass'));
   watch('./script/*.js',series('script'));
   watch('./pages/*.html',series('html'));
+  watch('./img/*.*',series('img'));
 })
 
 // 启动服务，自动刷新
@@ -59,4 +66,4 @@ task('connect',async ()=>{
 })
 
 // 构建开发包
-task('dev',series('delDist','image','sass','script','html','connect','watch'))
+task('dev',series('delDist','image','sass','script','html','connect','watch','img'))

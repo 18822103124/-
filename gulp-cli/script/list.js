@@ -1,2 +1,3 @@
 $('.head').load('./head.html');
-$('.bottom').load('./bottom.html');
+$('.bom').load('./bottom.html');
+

@@ -1,0 +1,69 @@
+html,body,ul,p,h1,h2,h3,h4,h5,h6,dl,dt,dd,form,table,ol,li,th,td,tr,colgroup,caption{margin:0;padding:0;};
+li{list-style:none;};
+a{text-decoration: none;};
+img{display: block;};
+h1,h2,h3,h4,h5,h6{font-weight:normal;};
+b,strong{font-weight:normal;};
+i,em{font-style:normal;};
+
+.god{
+    width: 100%;
+    height: 50px;
+    background-color: #f0f0f0;
+    .god_c{
+        width: 1270px;
+        height: 50px;
+        margin: 0 auto;
+        p{
+            color: #555;
+            line-height: 50px;
+            margin-left: 21px;
+            font-size: 14px;
+        }
+    }
+}
+
+.content{
+    width: 100%;
+    height: 700px;
+    padding-top: 60px;
+    border-bottom: 1px solid #e2e2e2;
+    .content_c{
+        width: 1226px;
+        height: 640px;
+        background-color: red;
+        margin: auto ;
+        .con_left{
+            width: 520px;
+            height: 640px;
+            float: left;
+            padding: 0 70px;
+            .con_img{
+                width: 520px;
+                height: 519px;
+                border-bottom: 1px solid #ccc;
+                img{
+                    width: 520px;
+                    height: 520px;
+                }
+            }
+            .con_bo{
+                width: 520px;
+                height: 100px;
+                margin-top: 20px;
+                text-align: center;
+                .ridus{
+                    display: inline-block;
+                    width: 60px;
+                    height: 60px;
+                    border: 2px solid #ccc;
+                    margin: 0 5px;
+                    img{
+                        width: 60px;
+                        height: 60px;
+                    }
+                }
+            }
+        }
+    }
+}

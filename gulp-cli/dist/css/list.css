@@ -1,0 +1,220 @@
+html, body, ul, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, form, table, ol, li, th, td, tr, colgroup, caption {
+  margin: 0;
+  padding: 0; }
+
+li {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+img {
+  display: block; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal; }
+
+b, strong {
+  font-weight: normal; }
+
+i, em {
+  font-style: normal; }
+
+.bx {
+  width: 100%;
+  height: 179px;
+  background-color: #f1f1f1; }
+  .bx .bx_t {
+    width: 1270px;
+    height: 179px;
+    margin: auto; }
+    .bx .bx_t .bx_tt {
+      width: 1270px;
+      height: 59px;
+      position: relative; }
+      .bx .bx_t .bx_tt span {
+        position: absolute;
+        top: 19px;
+        left: 20px;
+        font-size: 14px; }
+        .bx .bx_t .bx_tt span i {
+          color: red; }
+      .bx .bx_t .bx_tt em {
+        position: absolute;
+        top: 19px;
+        left: 105px;
+        font-size: 14px; }
+        .bx .bx_t .bx_tt em i {
+          color: red;
+          margin: 0 10px; }
+    .bx .bx_t .bx_bo {
+      width: 1227px;
+      height: 120px;
+      margin: auto;
+      background-color: #fff;
+      position: relative; }
+      .bx .bx_t .bx_bo span {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        font-size: 14px;
+        font-weight: 700; }
+      .bx .bx_t .bx_bo .bx_in {
+        width: 426px;
+        height: 39px;
+        position: absolute;
+        top: 40px;
+        left: 210px; }
+        .bx .bx_t .bx_bo .bx_in input {
+          width: 100px;
+          height: 37px;
+          border: 1px solid #999;
+          color: #999;
+          outline: none; }
+        .bx .bx_t .bx_bo .bx_in i {
+          margin: 0 10px; }
+        .bx .bx_t .bx_bo .bx_in button {
+          width: 112px;
+          height: 38px;
+          margin-left: 54px;
+          background-color: red;
+          color: white;
+          border: none;
+          cursor: pointer; }
+
+.tt {
+  width: 100%;
+  height: 100px;
+  background-color: #f1f1f1; }
+  .tt .tt_l {
+    width: 1270px;
+    height: 100px;
+    margin: auto;
+    position: relative; }
+    .tt .tt_l span {
+      position: absolute;
+      top: 44px;
+      left: 21px;
+      font-size: 14px;
+      color: red;
+      cursor: pointer; }
+    .tt .tt_l .hr1 {
+      position: absolute;
+      top: 44px;
+      left: 130px;
+      font-size: 14px;
+      color: #333; }
+    .tt .tt_l .hr2 {
+      position: absolute;
+      top: 44px;
+      left: 227px;
+      font-size: 14px;
+      color: #333; }
+
+.cont {
+  width: 100%;
+  min-height: 416px;
+  overflow: hidden;
+  background-color: #f1f1f1; }
+  .cont .cont_list {
+    width: 1270px;
+    min-height: 416px;
+    overflow: hidden;
+    margin: 0 auto; }
+    .cont .cont_list ul {
+      margin-left: 21px;
+      overflow: hidden; }
+      .cont .cont_list ul li {
+        float: left;
+        width: 400px;
+        height: 416px;
+        background-color: #fff;
+        margin-right: 14px;
+        margin-bottom: 14px; }
+        .cont .cont_list ul li img {
+          width: 230px;
+          height: 230px;
+          margin: auto; }
+        .cont .cont_list ul li .cont_b {
+          width: 360px;
+          height: 160px;
+          margin: 0 auto;
+          position: relative; }
+          .cont .cont_list ul li .cont_b strong {
+            width: 340px;
+            height: 30px;
+            padding: 0 10px;
+            font-size: 18px;
+            margin-top: 14px;
+            display: block;
+            text-align: center;
+            color: #333;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; }
+          .cont .cont_list ul li .cont_b p {
+            line-height: 20px;
+            width: 296px;
+            height: 40px;
+            color: #908f8f;
+            margin: 2px auto 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 12px; }
+          .cont .cont_list ul li .cont_b i {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: red; }
+          .cont .cont_list ul li .cont_b a {
+            display: block;
+            width: 146px;
+            height: 38px;
+            border: 1px solid red;
+            text-align: center;
+            position: absolute;
+            left: 105px;
+            bottom: 0; }
+            .cont .cont_list ul li .cont_b a em {
+              line-height: 38px;
+              color: red;
+              font-size: 14px; }
+            .cont .cont_list ul li .cont_b a:hover {
+              background-color: red; }
+              .cont .cont_list ul li .cont_b a:hover em {
+                color: #fff; }
+
+.num {
+  width: 100%;
+  height: 30px;
+  background-color: #f1f1f1;
+  padding-bottom: 50px; }
+  .num .num_r {
+    width: 1226px;
+    height: 30px;
+    margin: 0 auto;
+    position: relative; }
+    .num .num_r ul {
+      position: absolute;
+      right: 0;
+      top: 0; }
+      .num .num_r ul li {
+        float: left;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        margin: 0 5px;
+        font-size: 14px;
+        cursor: pointer; }
+      .num .num_r ul .pri {
+        background-color: #e3e3e3;
+        color: #999; }
+      .num .num_r ul .dre {
+        color: #333; }
+        .num .num_r ul .dre:hover {
+          background-color: red;
+          color: white; }
+      .num .num_r ul .dree {
+        color: #fff;
+        background-color: red; }
