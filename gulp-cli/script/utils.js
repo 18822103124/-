@@ -25,6 +25,24 @@ function getPrevNode(dom){
     }
 }
 
+// 获取第一个子节点
+function getFirstNode(dom){
+    if (dom.firstElementChild) {
+        return dom.firstElementChild;
+    } else {
+        return dom.firstChild;
+    }
+}
+
+// 获取最后一个子节点
+function getLastNode(dom){
+    if (dom.lastElementChild) {
+        return dom.lastElementChild;
+    } else {
+        return dom.lastChild;
+    }
+}
+
 // 生成6位随机验证码（数字、字母（大小））
 function randomCode(){
     var arr = [1,1,1,1,1,1];
@@ -69,6 +87,57 @@ function removeEvent(dom,type,cbName){
     } else {
         dom.removeEventListener(type,cbName);
     }
+}
+
+// 事件委托封装
+function on(parent,type,selector,callback){
+    addEvent(parent,type,function (ev){
+        var e = ev || event;//事件对象
+        var target = e.target || e.srcElement;//事件源
+        // 获取选择器第一个字符（ . ）
+        var sel_first = selector.substr(0,1);
+        // 记录第一个字符之后的属性值（ add ）
+        var sel_last = null;
+        // 记录选择器类型（id className tagName）
+        var sel_type = null;
+        // 判断传入的是什么选择器
+        switch(sel_first){
+            case '.': // 类选择器
+                sel_last = selector.slice(1);
+                sel_type = 'className';
+                break;
+            case '#': // id选择器
+                sel_last = selector.slice(1);
+                sel_type = 'id';
+                break;
+            default:
+                sel_last = selector;
+                sel_type = 'tagName';
+        }
+
+        // 只有传入selector元素被点击时触发
+        if (sel_type === 'tagName') {
+            // 如果是标签选择器，转成大写
+            sel_last = sel_last.toUpperCase();
+        }
+        if (target[sel_type] === sel_last){
+            // callback(e);
+            callback.call(target,e);
+        }
+
+        // 判断target是否为selector元素或selector的子元素
+        // while(target !== parent){
+        //     if (sel_type === 'tagName') {
+        //         // 如果是标签选择器，转成大写
+        //         sel_last = sel_last.toUpperCase();
+        //     }
+        //     if (target[sel_type] === sel_last) {
+        //         // callback(e);
+        //         callback.call(target,e);
+        //     }
+        //     target = target.parentNode;
+        // }
+    });
 }
 
 // 支持的属性：left  top   right  bottom  width  height  marginLeft  marginTop  ... 属性值带单位px的属性
@@ -176,4 +245,214 @@ function offset(dom,bool){
         return {left: l, top: t};
     }
     
+}
+
+// 获取url中的某个参数值
+function getQueryString(key){
+    var url = location.href;
+    var searchStr = url.split('?')[1];
+    var reg = new RegExp('[&]?'+key+'=([^&#]*)[&]?','i');
+    var arr = searchStr.match(reg);
+    // console.log(arr[1]);
+    // console.log( RegExp.$1 );
+    return (RegExp.$1);
+}
+
+// 判断是否为对象
+function isObject(obj){
+    if (Object.prototype.toString.call(obj) === '[object Object]'){
+        return true;
+    }
+    return false;
+}
+
+// ajax封装
+function ajax(options){
+    // 1.创建XMLHttpRequest对象（数据交互对象或ajax对象）
+    var xhr = new XMLHttpRequest();// 除了IE56其他都支持
+    // var xhr = new ActiveXObject('Microsoft.XMLHTTP');//IE56
+
+    // 对传入参数进行格式化 'abc=123&www=baidu'
+    var data = '';
+    if (typeof options.data === 'string') {
+        data = options.data;
+    }
+    // if (typeof options.data === 'object'&&options.data.constructor === 'Obejct'&& options.data !== null) {
+    if ( isObject(options.data) ){
+        for (var key in options.data){
+            data += key+'='+options.data[key]+'&';
+        }
+        // 'abc=123&www=baidu&'
+        data = data.substring(0,data.length-1);
+        // 'abc=123&www=baidu'
+    }
+
+    if (options.type.toLowerCase() === 'get') {
+        xhr.open(options.type,options.url+'?'+data+'&_='+Date.now());
+        xhr.send(null);
+    }else if (options.type.toLowerCase() === 'post'){
+        xhr.open(options.type,options.url);
+        // POST请求需要在send之前设置请求头，模拟表单的post提交
+        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+        // 3.发送请求
+        xhr.send(data);//post请求要发送的数据放参数里面
+    } else {
+        alert('目前只支持get和post请求方式');
+        return false;
+    }
+
+    // 4.请求/响应状态
+    // xhr.readyState  0-4
+    // xhr.readyState属性发送变化时会触发一个事件，readystatechange
+    xhr.onreadystatechange = function (){
+        // console.log( xhr.readyState );// 2 3 4
+        if (xhr.readyState === 4) {// 请求完成状态
+            // http状态码 xhr.status
+            if (xhr.status >= 200 && xhr.status < 300) {// 请求成功，可以拿到数据
+                // xhr.responseText  返回文本数据
+                // xhr.responseXML  返回 XML数据
+                if (options.dataType === 'xml') {
+                    options.success(xhr.responseXML);
+                } else {
+                    options.success(xhr.responseText);
+                }
+            } else {
+                options.error(xhr.status);
+            }
+        }
+    }
+}
+
+// 基于promise封装ajax
+function pajax(options){
+    return new Promise((resolve,reject)=>{
+        // 1.创建XMLHttpRequest对象（数据交互对象或ajax对象）
+        var xhr = new XMLHttpRequest();// 除了IE56其他都支持
+        // var xhr = new ActiveXObject('Microsoft.XMLHTTP');//IE56
+
+        // 对传入参数进行格式化 'abc=123&www=baidu'
+        var data = '';
+        if (typeof options.data === 'string') {
+            data = options.data;
+        }
+        // if (typeof options.data === 'object'&&options.data.constructor === 'Obejct'&& options.data !== null) {
+        if ( isObject(options.data) ){
+            for (var key in options.data){
+                data += key+'='+options.data[key]+'&';
+            }
+            // 'abc=123&www=baidu&'
+            data = data.substring(0,data.length-1);
+            // 'abc=123&www=baidu'
+        }
+
+        if (options.type.toLowerCase() === 'get') {
+            xhr.open(options.type,options.url+'?'+data+'&_='+Date.now());
+            xhr.send(null);
+        }else if (options.type.toLowerCase() === 'post'){
+            xhr.open(options.type,options.url);
+            // POST请求需要在send之前设置请求头，模拟表单的post提交
+            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+            // 3.发送请求
+            xhr.send(data);//post请求要发送的数据放参数里面
+        } else {
+            alert('目前只支持get和post请求方式');
+            return false;
+        }
+
+        // 4.请求/响应状态
+        // xhr.readyState  0-4
+        // xhr.readyState属性发送变化时会触发一个事件，readystatechange
+        xhr.onreadystatechange = function (){
+            // console.log( xhr.readyState );// 2 3 4
+            if (xhr.readyState === 4) {// 请求完成状态
+                // http状态码 xhr.status
+                if (xhr.status >= 200 && xhr.status < 300) {// 请求成功，可以拿到数据
+                    // xhr.responseText  返回文本数据
+                    // xhr.responseXML  返回 XML数据
+                    if (options.dataType === 'xml') {
+                        resolve(xhr.responseXML);
+                    } else {
+                        resolve(xhr.responseText);
+                    }
+                } else {
+                    reject(xhr.status);
+                }
+            }
+        }
+    })
+}
+
+// jsonp封装
+function jsonp(options){
+    // 把options.success变成全局函数
+    window[options.jsonpCallback] = options.success;
+
+    // 格式化参数
+    var data = '';
+    if (typeof options.data === 'string') {
+        data = options.data;
+    }
+    if (isObject(options.data)) {
+        for (var key in options.data){
+            data += key+'='+options.data[key]+'&';
+        }
+        data = data.substring(0,data.length-1);
+    }
+
+    // 创建 script 标签
+    var oScript = document.createElement('script');
+    // 把数据地址、参数、回调函数拼接赋值给src
+    oScript.src = options.url+'?'+data+'&'+options.jsonp+'='+options.jsonpCallback;
+    // 添加到body中
+    document.body.appendChild(oScript);
+    // 数据加载完成后删除script标签
+    oScript.onload = function (){
+        document.body.removeChild(oScript);
+    }
+}
+
+// 获取元素
+function $1(selector){
+    return document.querySelector(selector);
+}
+function $2(selector){
+    return document.querySelectorAll(selector);
+}
+
+// 设置cookie
+function setCookie(options){
+    if (!options.key || !options.val) {
+        throw new Error('设置失败，缺少必要参数！');
+    }
+    options.days = options.days || 0;
+    options.domain = options.domain || '';
+    options.path = options.path || '';
+    if (options.days === 0) {
+        document.cookie = options.key + '=' + escape(options.val) + '; domain=' + options.domain + '; path=' + options.path;
+    } else {
+        var d = new Date();
+        d.setDate(d.getDate()+options.days);
+        document.cookie = options.key + '=' + escape(options.val) + '; domain=' + options.domain + '; path=' + options.path + '; expires=' + d;
+    }
+}
+
+// 获取cookie
+function getCookie(key){
+    var arr1 = document.cookie.split('; ');
+    for (var i = 0, len = arr1.length; i < len; i++){
+        var arr2 = arr1[i].split('=');
+        if (arr2[0] === key) {
+            return unescape(arr2[1]);
+        }
+    }
+    return null;
+}
+
+// 删除cookie
+function removeCookie(key){
+    setCookie({
+        key: key,
+        val: '1234',
+        days: -5
+    });
 }
