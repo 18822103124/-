@@ -63,3 +63,8 @@ active.onclick=function(){
         moveNext();
     },5000);
 }
+
+$('.text_list a').click(function(){
+    localStorage.setItem( 'id', $(this).index());
+
+})
