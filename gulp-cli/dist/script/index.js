@@ -1,4 +1,4 @@
-$('.head').load('./head.html');
+ $('.head').load('./head.html');
 $('.bom').load('./bottom.html');
 var imgs=document.querySelectorAll('.lun_img img');
 var nums=document.querySelectorAll('.num li');
@@ -67,4 +67,11 @@ active.onclick=function(){
 $('.text_list a').click(function(){
     localStorage.setItem( 'id', $(this).index());
 
+})
+
+$('.num li').bind('click',function(){
+    clearInterval(timer);
+    $('.num li').removeClass('acc');
+    $(this).addClass('acc');
+    moveNext();
 })
