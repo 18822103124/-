@@ -40,6 +40,10 @@ $('.nav_iup input').blur(function(){
 
 $('.nav_d a').click(function(){
     if($('.nav_tt .zh').text()=='' && $('.nav_tt .mm').text()==''){
+        if($('.nav_inp input').val()=='' || $('.nav_iup input').val()==''){
+            alert('账号或密码不能为空');
+            return;
+        }
         if(getCookie($('.nav_inp input').val())){
             alert('此账号已被注册');
             return;
@@ -51,5 +55,7 @@ $('.nav_d a').click(function(){
         })
         alert('注册成功');
         $('.nav_d a').prop('href','./register.html');
+    }else{
+        alert('账号或密码不符合规范');
     }
 })

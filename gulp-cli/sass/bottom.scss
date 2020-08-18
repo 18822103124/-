@@ -34,10 +34,16 @@ i,em{font-style:normal;};
                         color: #999;
                         padding-bottom: 12px;
                         font-size: 12px;
+                        &:hover{
+                            text-decoration: underline;
+                        }
                     }
                     img{
                         width: 100px;
                         height: 100px;
+                    }
+                    .rd{
+                        color: red;
                     }
                 }
                 
@@ -53,6 +59,7 @@ i,em{font-style:normal;};
                     font-size: 20px;
                     line-height: 20px;
                     padding-bottom: 2px;
+                    color: red;
                 }
                 .grey{
                     font-size: 12px;
@@ -105,6 +112,9 @@ i,em{font-style:normal;};
                     font-size: 12px;
                     padding: 0 15px;
                     color: #666;
+                    &:hover{
+                        text-decoration: underline;
+                    }
                 }
                 .cli{
                     border-right: none;

@@ -11,7 +11,7 @@ $('.bom').load('./bottom.html');
                 // console.log(json.length);
                 $.each(json,function(index,item){
                     let str=`
-                        <li><a href="./details.html"><img src=${item.img} alt=""></a>
+                        <li><a href="./details.html" target="_blank"><img src=${item.img} alt=""></a>
                             <div class="cont_b">
                             <strong>${item.title}</strong>
                             <p>${item.test}</p>
